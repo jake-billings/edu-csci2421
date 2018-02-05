@@ -18,6 +18,11 @@
  *
  * I implement a simple set of unit tests to validate the functionality of my solution.
  *
+ * I implement validation in the ">>" set operator by separately parsing each string word
+ *  of each line that the operator reads. If there is an error parsing the string, then
+ *  the operator function throws a runtime_exception. A unit test and invalid text file
+ *  verifies this functionality.
+ *
  * Outline
  * =======
  *  - describe(), assertInt() - Simple Test Suite Functions
@@ -33,7 +38,7 @@
 #include <fstream>
 
 //Include the GuessingGame class
-#include "Set.h"
+#include "SetFunctions.h"
 
 //Use the standard namespace so that we don't have to type "std" all the time
 using namespace std;
@@ -123,8 +128,22 @@ void test() {
     }
     failCount += assertInt(1, maxFreq);
 
+    //Validate error checking by trying to load a file that
+    // contains invalid values
+    describe("Operator '>>' should throw runtime_error when reading from file that has invalid values");
+    ifstream invalidInput;
+    invalidInput.open("setInputInvalid.txt");
+    unsigned int exceptionCount = 0;
+    try {
+        Set d;
+        invalidInput >> d;
+    } catch (const runtime_error& e) {
+        exceptionCount++;
+    }
+    assertInt(1, exceptionCount);
+
     //Completion message
-    cout << "Completed automated tests. Failed " << failCount << " tests." << endl;
+    cout << endl << "Completed automated tests. Failed " << failCount << " tests." << endl;
     cout << "======End Unit Tests======" << endl;
 
 }
@@ -162,7 +181,7 @@ int main() {
 
     //Print union and intersect
     cout << "Set A+B: " << aUnionB << endl;
-    cout << "Set B-B: " << aIntersectB << endl;
+    cout << "Set A-B: " << aIntersectB << endl;
 
     //Exit with a 0 status code
     return 0;

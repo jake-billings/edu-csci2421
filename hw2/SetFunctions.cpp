@@ -5,7 +5,7 @@
  * Description: Implementation file for the class Set, which extends ArrayBag with set features (see Set class docs)
  * Status: compiles and runs on csegrid
  */
-#include "Set.h"
+#include "SetFunctions.h"
 
 /**
  * add()
@@ -43,10 +43,24 @@ istream& operator>>(istream &in, Set &set) {
     getline(in, line);
     istringstream is(line);
 
-    //Read all ints from the line we read and add them to the set
-    int input;
-    while (is >> input) {
-        set.add(input);
+    //Read all whitespace-delimited "word" from the line we read
+    // try to parse it to an int; if there's an error doing that,
+    // throw our own error to meet the validation requirement for
+    // the extra credit on this assignment
+    string word;
+    while (is >> word) {
+        try {
+            //try to parse the string
+            // if it fails, the string isn't a valid
+            // integer, and we need to throw our own error
+            int i = stoi(word);
+
+            set.add(i);
+        } catch (const invalid_argument& e) {
+            // fullfill validation requirement by catching the invalid_argument error
+            // and throwing our own error
+            throw runtime_error("error parsing set from input stream; malformed/non-int word found in input stream");
+        }
     }
 
     //Return the input stream

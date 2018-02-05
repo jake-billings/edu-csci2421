@@ -37,6 +37,13 @@
  I implement a simple set of unit tests to validate the
  functionality of my solution in main.cpp.
 
+ I implement validation in the ">>" set operator by
+ separately parsing each string word of each line that
+ the operator reads. If there is an error parsing the
+ string, then the operator function throws a
+ runtime_exception. A unit test and invalid text file
+ verifies this functionality.
+
  Outline of main.cpp
  ===================
   - describe(), assertInt() - Simple Test Suite Functions
@@ -56,10 +63,10 @@ Name:  main.cpp
    main() calls test() then runs a demo of the program
 
 
-Name:  set.h
+Name:  SetFunctions.h
    Contains the definition for the class Set.
 
-Name: set.cpp
+Name: SetFunctions.cpp
    Contains implementations of the operators for the Set class
    and the overridden add() function
 
@@ -71,6 +78,9 @@ Name: ArrayBag.cpp
 
 Name: setInput.txt
     The provided set data we have to work with
+
+Name: setInputInvalid.txt
+    Invalid set data used to verify validation functionality in a unit test
 
 Name: validateInput.cpp
     Unused; The provided example of validation

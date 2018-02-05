@@ -4,7 +4,7 @@
 #make
 #./matrix  (or whatever you call the TARGET)
 
-SOURCES = main.cpp ArrayBag.cpp Set.cpp
+SOURCES = main.cpp ArrayBag.cpp SetFunctions.cpp
 
 ######Change from matrix to (for example hw1) .#######
 TARGET = hw2
