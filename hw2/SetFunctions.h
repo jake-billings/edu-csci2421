@@ -17,6 +17,8 @@
 #include <sstream>
 //Include numeric limits for brute-force guessing in operation implementations
 #include <limits>
+//Incude std except because we need runtime_err
+#include <stdexcept>
 //Include ArrayBag vecuase we need to extend it
 #include "ArrayBag.h"
 
