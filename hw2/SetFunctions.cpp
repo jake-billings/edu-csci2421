@@ -155,9 +155,9 @@ Set operator+(Set &a, Set &b) {
 /**
  * operator-
  *
- * SET INTERSECT OPERATOR
+ * SET DIFFERENCE OPERATOR
  *
- * returns the intersection of two set objects as a new set object
+ * removes all elements that are in b from a
  *
  * ineffcient implementation: since we don't have access to the private underlying items array,
  *  we must make use of the available ArrayBag functions. This means we essentially have to guess
@@ -187,13 +187,13 @@ Set operator-(Set &a, Set &b) {
         unsigned int freqB = b.getFrequencyOf(i);
         comparedElementCount += freqA;
         comparedElementCount += freqB;
-        if ((freqA>0)&&(freqB>0)) c.add(i);
+        if (freqA>freqB) c.add(i);
 
         unsigned int freqANeg = a.getFrequencyOf(-i);
         unsigned int freqBNeg = b.getFrequencyOf(-i);
         comparedElementCount += freqANeg;
         comparedElementCount += freqBNeg;
-        if ((freqANeg>0)&&(freqBNeg>0)) c.add(-i);
+        if (freqANeg>freqBNeg) c.add(-i);
     }
 
     //Return set c by value

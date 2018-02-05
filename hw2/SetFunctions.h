@@ -63,6 +63,7 @@ public:
      * @return in
      */
     friend istream &operator>>(istream &in, Set &set);
+
     /**
      * operator<<
      *
@@ -102,9 +103,9 @@ public:
     /**
      * operator-
      *
-     * SET INTERSECT OPERATOR
+     * SET DIFFERENCE OPERATOR
      *
-     * returns the intersection of two set objects as a new set object
+     * removes all elements that are in b from a
      *
      * ineffcient implementation: since we don't have access to the private underlying items array,
      *  we must make use of the available ArrayBag functions. This means we essentially have to guess

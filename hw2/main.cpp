@@ -112,10 +112,10 @@ void test() {
     Set aUnionB = a + b;
     failCount += assertInt(15, aUnionB.getCurrentSize());
 
-    //Test intersect
-    describe("Set A-B (A intersect B) should have 9 elements");
-    Set aIntersectB = a - b;
-    failCount += assertInt(9, aIntersectB.getCurrentSize());
+    //Test difference
+    describe("Set A-B (A difference B) should have 1 element");
+    Set aDifferenceB = a - b;
+    failCount += assertInt(1, aDifferenceB.getCurrentSize());
 
     //Test set functionality
     describe("Max frequency in all sets should be 1");
@@ -124,7 +124,7 @@ void test() {
         if (a.getFrequencyOf(i) > maxFreq) maxFreq=a.getFrequencyOf(i);
         if (b.getFrequencyOf(i) > maxFreq) maxFreq=a.getFrequencyOf(i);
         if (aUnionB.getFrequencyOf(i) > maxFreq) maxFreq=a.getFrequencyOf(i);
-        if (aIntersectB.getFrequencyOf(i) > maxFreq) maxFreq=a.getFrequencyOf(i);
+        if (aDifferenceB.getFrequencyOf(i) > maxFreq) maxFreq=a.getFrequencyOf(i);
     }
     failCount += assertInt(1, maxFreq);
 
@@ -175,13 +175,13 @@ int main() {
     cout << "Set A: " << a << endl;
     cout << "Set B: " << b << endl;
 
-    //Calculate union and intersect
+    //Calculate union and difference
     Set aUnionB = a + b;
-    Set aIntersectB = a - b;
+    Set aDifferenceB = a - b;
 
-    //Print union and intersect
+    //Print union and difference
     cout << "Set A+B: " << aUnionB << endl;
-    cout << "Set A-B: " << aIntersectB << endl;
+    cout << "Set A-B: " << aDifferenceB << endl;
 
     //Exit with a 0 status code
     return 0;
