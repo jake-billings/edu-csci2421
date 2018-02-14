@@ -7,6 +7,8 @@
  */
 
 #include <vector>
+//Incude std except because we need runtime_err
+#include <stdexcept>
 #include "Vehicle.h"
 
 #ifndef EDU_CSCI2421_FUNCTIONS_H
