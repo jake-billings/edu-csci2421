@@ -1,0 +1,42 @@
+operator[]()
+            1 x O(1): compare
+            1 x O(1): compare
+            1 x O(1): variable access
+            =========================
+    Total:  O(1)
+
+pop_back()
+            1 x O(1): compare
+            1 x O(1): variable access
+            1 x O(n): malloc() - see source code for source for O(n)
+            1 x O(n): memcpy() - see source code for source for O(n)
+            1 x O(n): free() - see source code for source for O(n)
+            1 x O(1): variable access
+            =========================
+    Total:  O(n)
+
+push_back()
+            1 x O(1): variable access
+            1 x O(n): malloc() - see source code for source for O(n)
+            1 x O(n): memcpy() - see source code for source for O(n)
+            1 x O(1): variable access
+            1 x O(n): free() - see source code for source for O(n)
+            1 x O(1): variable access
+            =========================
+    Total:  O(n)
+
+size()
+            1 x O(1): variable access
+            =========================
+    Total:  O(1)
+
+empty()
+            1 x O(1): variable access
+            =========================
+    Total:  O(1)
+
+search()
+            1 x O(n): for loop over array access
+                1 x O(1) compare
+            =========================
+    Total:  O(1)
