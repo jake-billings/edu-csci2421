@@ -4,8 +4,11 @@
  * Class: CSCI 2421
  * Description:
  *
- * Task:
- *
+ * Task: I intpereted the task for this homework as follows:
+ *  1. Load vehicles from vehicle input.txt
+ *  2. Ask a user for a target year
+ *  3. Perform a recursive binary search for a car that matches that year
+ *  4. Perform an iterative binary search for a car that matches that year
  *
  * Outline
  * =======
@@ -97,7 +100,7 @@ void test() {
     }
     failCount += assertInt(0, invalidYearExists);
 
-    describe("loading: vehicles in vector should have valid string makes and models in which cars were actually manufactured");
+    describe("loading: vehicles in vector should have valid string");
     bool invalidStrExists = false;
     for (unsigned int i = 0; i < vehicles.size(); i++) {
         if (vehicles[i].getMake().empty() || vehicles[i].getModel().empty()) invalidStrExists=true;
