@@ -69,6 +69,7 @@ public:
      * @return out
      */
     friend ostream& operator<<(ostream &out, Vehicle &car1);
+
     /**
      * Define the >> operator as a method to deserialize this object
      *
@@ -79,20 +80,6 @@ public:
      * @return out (input)
      */
     friend istream& operator>>(istream &out, Vehicle &car1);
-
-
-    /**
-     * Define a method to serialize this object without console output
-     *
-     * @param out The output stream to serialize to
-     */
-    void serialize(ostream &out);
-    /**
-     * Define a method to deserialize this object without console output
-     *
-     * @param in The input stream to serialize to
-     */
-    void deserialize(istream &in);
 };
 
 
