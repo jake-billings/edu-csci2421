@@ -13,13 +13,12 @@
 *  Description of the program
 *******************************************************
 
- Task: I interpreted the task for this homework as follows:
-   1. Download MyVector.h
-   2. Implement MyVector in MyVector.cpp
-
- My program performs automated testing on load, sort, and search
- functions then demos the functionality via command-line
- ineraction.
+ Task:
+  1. Implement LinkedList in a cpp file based on LinkList.h
+  2. Verify the functionality of LinkedList in main.cpp
+  3. Analyze the asyptotic complexity of the following functions:
+    a. insertAtFront()
+    b. insertAtBack()
 
  Outline
  =======
@@ -40,12 +39,12 @@ Name:  main.cpp
 
    main() calls test() then runs a demo of the program
 
-Name:  MyVector.h
-   contains class definition for the MyVector class
+Name:  LinkedList.h
+   contains class definition for the LinkedList class
    this was provided by the assignment, and I have not edited it
 
-Name:  MyVector.h
-   contains class implementation for the MyVector class
+Name:  LinkedList.cpp
+   contains class implementation for the LinkedList class
    I implemented this solution.
    see file for function docs
 

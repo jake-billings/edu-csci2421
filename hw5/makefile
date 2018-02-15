@@ -4,7 +4,7 @@
 #make
 #./matrix  (or whatever you call the TARGET)
 
-SOURCES = main.cpp MyVector.cpp
+SOURCES = main.cpp LinkedList.cpp
 
 ######Change from matrix to (for example hw1) .#######
 TARGET = billingsJakeHW4

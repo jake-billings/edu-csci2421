@@ -2,9 +2,13 @@
  * Name: Jake Billings
  * Date: 03/01/2018
  * Class: CSCI 2421
- * Description:
  *
- *
+ * Task:
+ *  1. Implement LinkedList in a cpp file based on LinkList.h
+ *  2. Verify the functionality of LinkedList in main.cpp
+ *  3. Analyze the asyptotic complexity of the following functions:
+ *    a. insertAtFront()
+ *    b. insertAtBack()
  *
  * Outline
  * =======
@@ -18,11 +22,8 @@
 //---------Dependency Imports---------
 //Include standard libraries we are allowed to use
 #include <iostream>
-//Include sstream for the >> operator to read one line at a time
+//Include sstream for testing the output of the << operator
 #include <sstream>
-#include <fstream>
-#include <vector>
-#include <stdexcept>
 
 //Include the assignment headers
 #include "LinkedList.h"
