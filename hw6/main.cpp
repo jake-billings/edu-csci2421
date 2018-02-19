@@ -174,7 +174,7 @@ void test() {
     bool err = false;
     try {
         dict3.searchByWord("a");
-    } catch (runtime_error *e) {
+    } catch (runtime_error e) {
         err = true;
     }
     failCount += assertInt(true, err);
@@ -184,7 +184,7 @@ void test() {
     err = false;
     try {
         dict3.searchByWord("a");
-    } catch (runtime_error *e) {
+    } catch (runtime_error e) {
         err = true;
     }
     failCount += assertInt(false, err);
@@ -220,7 +220,7 @@ void test() {
     err = false;
     try {
         dict3.searchByWordReverse("a");
-    } catch (runtime_error *e) {
+    } catch (runtime_error e) {
         err = true;
     }
     failCount += assertInt(false, err);

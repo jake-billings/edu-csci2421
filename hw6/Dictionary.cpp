@@ -72,7 +72,7 @@ bool Dictionary::isSorted() {
  */
 SearchResult Dictionary::searchByWord(string word) {
     //throw an error if the list isn't sorted
-    if (!this->isSorted()) throw new runtime_error("cannot search an unsorted dictionary");
+    if (!this->isSorted()) throw runtime_error("cannot search an unsorted dictionary");
 
     //keep track of how many iterations the search took; this will also give us our index
     unsigned int count = 0;
@@ -104,7 +104,7 @@ SearchResult Dictionary::searchByWord(string word) {
  */
 SearchResult Dictionary::searchByWordReverse(string word) {
     //throw an error if the list isn't sorted
-    if (!this->isSorted()) throw new runtime_error("cannot reverse search an unsorted dictionary");
+    if (!this->isSorted()) throw runtime_error("cannot reverse search an unsorted dictionary");
 
     //keep track of how many iterations the search took; this will also give us our index
     unsigned int count = 0;
