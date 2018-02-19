@@ -4,10 +4,10 @@
 #make
 #./matrix  (or whatever you call the TARGET)
 
-SOURCES = main.cpp LinkedList.cpp
+SOURCES = main.cpp Dictionary.cpp SearchResult.cpp
 
 ######Change from matrix to (for example hw1) .#######
-TARGET = billingsJakeHW4
+TARGET = billingsJakeHW6
 
 #-------Do Not Change below this line-------------
 #Compile with g++
