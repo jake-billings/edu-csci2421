@@ -51,9 +51,9 @@ bool Dictionary::isSorted() {
 
     //For each element that isn't the last or second to last element,
     while (it != --this->entries.end()) {
-        //If it's less than the next element, we aren't sorted in alphabetical order,
+        //If it's greater than the next element, we aren't sorted in alphabetical order,
         // so return false
-        if (!(*it < *(++it))) return false;
+        if (!((*it) < (*(++it)))) return false;
     }
 
     //If we haven't returned false yet, return true because no
