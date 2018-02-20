@@ -47,13 +47,17 @@ void Dictionary::sort() {
  */
 bool Dictionary::isSorted() {
     //Spawn an iterator to use
-    list<DictEntry>::iterator it = this->entries.begin();
+    list<DictEntry>::iterator it = this->entries.begin()++;
+    list<DictEntry>::iterator last = this->entries.begin();
 
     //For each element that isn't the last or second to last element,
-    while (it != --this->entries.end()) {
-        //If it's greater than the next element, we aren't sorted in alphabetical order,
-        // so return false
-        if (!((*it) < (*(++it)))) return false;
+    while (it != this->entries.end()) {
+        //Return false if out of order
+        if (*it < *last) return false;
+
+        //Advance the iteration
+        last = it;
+        it++;
     }
 
     //If we haven't returned false yet, return true because no
