@@ -36,6 +36,8 @@ LinkedList::~LinkedList() {
 /**
  * insertAtFront()
  *
+ * O(1)
+ *
  * add a value to the beginning of the linked list
  *
  * @param value value to add
@@ -59,6 +61,8 @@ bool LinkedList::insertAtFront(char value) {
 
 /**
  * insertBeforePosition()
+ *
+ * O(n)
  *
  * insert a value at a specific location in the linked list
  *
@@ -101,6 +105,8 @@ bool LinkedList::insertBeforePosition(char value, int index) {
 /**
  * insertAtBack()
  *
+ * O(n)
+ *
  * inserts an element on the end of the list
  *
  * @param value value to insert
@@ -128,6 +134,8 @@ bool LinkedList::insertAtBack(char value) {
 /**
  * deleteAtFront()
  *
+ * O(1)
+ *
  * deletes at the front of the list
  *
  * @return true if successful
@@ -145,6 +153,8 @@ bool LinkedList::deleteAtFront() {
 
 /**
  * deletePosition()
+ *
+ * O(n)
  *
  * delete at any position in the list
  *
@@ -186,6 +196,8 @@ bool LinkedList::deletePosition(int index) {
 /**
  * deleteAtBack()
  *
+ * O(n)
+ *
  * delete an element from the end of the list
  *
  * @return true if successful
@@ -217,6 +229,8 @@ bool LinkedList::deleteAtBack() {
 
 /**
  * operator<<
+ *
+ * O(n)
  *
  * prints a linked list to a stream
  *

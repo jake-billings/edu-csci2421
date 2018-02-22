@@ -1,0 +1,50 @@
+LinkedList()()
+            1 x O(1) create operation
+            =========================
+    Total:  O(1)
+
+~LinkedList()()
+            1 x O(n): for loop through each pointer until end
+            1 x O(1) insert operation
+            =========================
+    Total:  O(n)
+
+insertAtFront()
+            1 x O(1) insert operation
+            =========================
+    Total:  O(1)
+
+insertBeforePosition()
+            1 x O(n): for loop through each pointer until target
+            1 x O(1) insert operation
+            =========================
+    Total:  O(n)
+
+insertAtBack()
+            1 x O(n): for loop through each pointer until back
+            1 x O(1) delete operation
+            =========================
+    Total:  O(n)
+
+deleteAtFront()
+            1 x O(1) delete operation
+            =========================
+    Total:  O(1)
+
+deletePosition()
+            1 x O(n): for loop through each pointer until target
+            1 x O(1) delete operation
+            =========================
+    Total:  O(n)
+
+deleteAtBack()
+            1 x O(n): for loop through each pointer
+            1 x O(1) delete operation
+            =========================
+    Total:  O(n)
+
+&operator<<()
+            1 x O(n): for loop through each pointer
+                1 x O(1) write out
+            =========================
+    Total:  O(n)
