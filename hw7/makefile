@@ -4,7 +4,7 @@
 #make
 #./matrix  (or whatever you call the TARGET)
 
-SOURCES = main.cpp
+SOURCES = main.cpp CustomerEvent.cpp Simulation.cpp SimulationResult.cpp
 
 ######Change from matrix to (for example hw1) .#######
 TARGET = billingsJakeHW7
