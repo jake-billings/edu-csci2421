@@ -1,4 +1,13 @@
 /**
+ * ======================== Update =========================
+ * This implementation is locked by project requirements
+ * to use a pre-written header file. This header file
+ * contains a full Node object as the head instead of
+ * just a head pointer. It also doesn't use generic typing.
+ * A better LinkedList example is available at this link:
+ *
+ * https://github.com/jake-billings/edu-csci2312/tree/master/hw06
+ *
  * Name: Jake Billings
  * Date: 03/01/2018
  * Class: CSCI 2421
