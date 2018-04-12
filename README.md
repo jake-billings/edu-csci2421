@@ -16,7 +16,7 @@ Each project contains a `readme.txt` file. These have been completed in a format
 - HW4: Vector Implementaion (Dynamic Array using malloc() and free())
 - HW5: Linked List Implementation (using malloc() and free())
 - HW6: Doubly Linked List with searching and sorting
-- HW7: Coming soon
-- HW8: Coming soon
+- HW7: Queues, Blocking, and Event-based Simulation
+- HW8: Final Project Preparation - Design Brainstorming and Documentation
 - HW9: Coming soon
 - FINAL PROJECT: Coming soon
