@@ -6,3 +6,4 @@ CMakeLists.txt
 *.zip
 *.o
 ~$*
+hw9/Potter.txt
