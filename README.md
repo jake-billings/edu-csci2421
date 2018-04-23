@@ -18,5 +18,5 @@ Each project contains a `readme.txt` file. These have been completed in a format
 - HW6: Doubly Linked List with searching and sorting
 - HW7: Queues, Blocking, and Event-based Simulation
 - HW8: Final Project Preparation - Design Brainstorming and Documentation
-- HW9: Coming soon
+- HW9: Hash Table as a simple spell checker
 - FINAL PROJECT: Coming soon
