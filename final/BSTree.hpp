@@ -114,8 +114,8 @@ Node<DATATYPE, KEYTYPE> * BSTree<DATATYPE, KEYTYPE>::findNode(KEYTYPE key, Node<
 	//Greater than (Right), Less than (Left)
     if (node == nullptr) return nullptr;
 	if (node->Key() == key) return node;
-    if (key < node->Key()) return node->Left();
-    return node->Right();
+    if (key < node->Key()) return findNode(key, node->Left());
+    return findNode(key, node->Right());
 }
 
 template <typename DATATYPE, typename KEYTYPE>
