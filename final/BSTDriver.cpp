@@ -10,7 +10,7 @@ but do NOT compile it (or add it to the project)*/
 #include "BSTree.hpp"
 using namespace std;
 
-int main()
+int _bst_main()
 {
 	BSTree<GeneralData, int> *tree = new BSTree<GeneralData, int>;
 	cout << "Adding Nodes...\n";
