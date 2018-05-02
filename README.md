@@ -4,10 +4,10 @@ This repository contains the work I completed for the course CSCI2421 Data Struc
 ## Building this Project
 This project has no non-standard library dependencies. I wrote a majority of this code using CMake in CLion. However, homework requirements dictate that each assignment must have a working makefile from a standard template distributed at the beginning of the class. Thus, each folder contains a make file. If you have `g++` installed, all you have to do is clone the repository and run make in a directory to build the project. The executable will be place in that directory. I do not include `CMakeLists.txt`.
 
-## Unit Testing
-I don't use a testing framework for these assignments. However, I do automate testing using a few functions in each `main.cpp` file.
 
-See the functions: `assertString`, `assertInt`, and `describe` in each project.
+## Unit, E2E, and Integration Testing
+I wrote automated testing for each assignment. Using a few functions as a very basic testing suite, I test the critical functionality of each assignment. I also compare the pros/cons of unit/integration/e2e testing. See the function `test()` in each main file for the testing written for that assignment.
+
 
 ## Documentation
 I put a lot of effort into documenting the code in this repository. All functions, variables, blocks, includes, and classes have documentation-style comments detailing the name, type, purpose, and details of the following code.
@@ -39,10 +39,6 @@ I put a lot of effort into documenting the code in this repository. All function
  */
 class Table { ... }
 ```
-
-## Unit, E2E, and Integration Testing
-I wrote automated testing for each assignment. Using a few functions as a very basic testing suite, I test the critical functionality of each assignment. I also compare the pros/cons of unit/integration/e2e testing. See the function `test()` in each main file for the testing written for that assignment.
-
 
 ## Work
 - HW1: Introductory Guessing Game Assignment
