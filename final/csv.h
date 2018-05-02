@@ -2,7 +2,7 @@
 // Created by Jake Billings on 4/30/18.
 //
 #include <vector>
-#include <map>
+#include <unordered_map>
 #include <iostream>
 #include <sstream>
 
@@ -25,8 +25,8 @@ using namespace std;
  * may throw runtime_error if csv is malformed
  *
  * @param in input stream pointing to a valid csv file
- * @return a vector in which each entry is a map representing the row from the csv
+ * @return pair: a vector of strings that are the titles and a vector in which each entry is a map representing the row from the csv
  */
-vector <map<string, string>> readCsvAsMaps(istream &in);
+pair<vector<string>, vector<unordered_map<string, string>>> readCsvAsMaps(istream &in);
 
 #endif //EDU_CSCI2421_CSV_H

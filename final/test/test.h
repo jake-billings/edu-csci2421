@@ -1,20 +1,18 @@
-/*
- * This file is subject to the terms and conditions defined in
- * file 'LICENSE', which is part of this source code package.
- */
 #include <iostream>
 #include <fstream>
 #include <map>
 #include <vector>
 #include <sstream>
+#include "../BSTree.h"
 #include "test_support.h"
 
 #include "../csv.h"
+#include "../Table.h"
 
 using namespace std;
 
-#ifndef RESEARCH_MICROGRID_CPP_TEST_H
-#define RESEARCH_MICROGRID_CPP_TEST_H
+#ifndef TEST_H
+#define TEST_H
 
 /**
  * int test()
@@ -23,4 +21,4 @@ using namespace std;
  */
 void test();
 
-#endif //RESEARCH_MICROGRID_CPP_TEST_H
+#endif //TEST_H

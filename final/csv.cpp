@@ -9,7 +9,7 @@
  *
  * inspired by JSON/JavaScript objects
  *
- * reads every row of a csv file as a map object where the keys are the header cells and
+ * reads every row of a csv file as a unordered_map object where the keys are the header cells and
  *  the cells are field values
  *
  * assumes istream is an input stream pointing to a valid csv file with a single header row that is as wide
@@ -18,9 +18,9 @@
  * may throw runtime_error if csv is malformed
  *
  * @param in input stream pointing to a valid csv file
- * @return a vector in which each entry is a map representing the row from the csv
+ * @return a vector in which each entry is a unordered_map representing the row from the csv
  */
-vector<map<string, string>> readCsvAsMaps(istream &in) {
+pair<vector<string>, vector<unordered_map<string, string>>> readCsvAsMaps(istream &in) {
     //---Titles---
     //Reading the titles is a special case; the first row isn't treated the same as the other rows
     //1. Read the whole title line
@@ -37,7 +37,7 @@ vector<map<string, string>> readCsvAsMaps(istream &in) {
     } while (!titleStream.eof());
 
     //Instantiate the table object we're going to return
-    vector<map<string, string>> table;
+    vector<unordered_map<string, string>> table;
 
 
     //---Rows---
@@ -47,8 +47,8 @@ vector<map<string, string>> readCsvAsMaps(istream &in) {
         getline(in, line);
         istringstream lineStream(line);
 
-        // 2. Instantiate a map to store the row's contents (this is the part inspired by JSON objects)
-        map<string, string> row;
+        // 2. Instantiate a unordered_map to store the row's contents (this is the part inspired by JSON objects)
+        unordered_map<string, string> row;
 
         // 3. Read each comma-separated value within that row as a single field value where the key is given by the column header
         unsigned int i = 0;
@@ -66,5 +66,5 @@ vector<map<string, string>> readCsvAsMaps(istream &in) {
         table.push_back(row);
     }
 
-    return table;
+    return pair<vector<string>, vector<unordered_map<string, string>>>(titles, table);
 };

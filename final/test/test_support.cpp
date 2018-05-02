@@ -1,7 +1,3 @@
-/*
- * This file is subject to the terms and conditions defined in
- * file 'LICENSE', which is part of this source code package.
- */
 #include "test_support.h"
 
 //---------Poor Man's Testing Suite----------
@@ -46,7 +42,7 @@ int assertInt(int expected, int got) {
  * @param got The actual function value
  * @return int 1 if the test failed; 0 if it didn't
  */
-long assertLong(long expected, long got) {
+int assertLong(long expected, long got) {
     if (expected == got) {
         std::cout << "Passed.";
     } else {
@@ -55,6 +51,27 @@ long assertLong(long expected, long got) {
     std::cout << std::endl;
 
     return expected != got;
+}
+
+/**
+ * failCount +=  assertNotNullLong()
+ *
+ * Prints "Passed" or "Failed" with appropriate messages bassed on if a value is not null
+ *
+ * @param expected The value we expect got to equal
+ * @param got The actual function value
+ * @return int 1 if the test failed; 0 if it didn't
+ */
+int assertNotNull(long got) {
+    if (got == (long) nullptr) {
+        std::cout << "Failed. Expected pointer not to be nullptr; Got " << got << ".";
+        std::cout << std::endl;
+        return 1;
+    } else {
+        std::cout << "Passed.";
+        std::cout << std::endl;
+        return 0;
+    }
 }
 
 /**

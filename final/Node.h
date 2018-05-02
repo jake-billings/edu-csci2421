@@ -12,7 +12,7 @@ using namespace std;
 
 struct GeneralData
 {
-    int number; //Update this to your data field  
+    int number; //Update this to your data field
 	string name;
 };
 
@@ -21,7 +21,7 @@ struct GeneralData
 template <typename DATATYPE, typename KEYTYPE>
 class Node {
 private:
-    int key; //This should be the datatype of your key...sorted field in tree
+    KEYTYPE key; //modified to KEYTYPE
     DATATYPE data;
     Node<DATATYPE, KEYTYPE> * left;
     Node<DATATYPE, KEYTYPE> * right;

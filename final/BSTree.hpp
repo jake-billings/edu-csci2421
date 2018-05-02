@@ -58,7 +58,7 @@ void BSTree<DATATYPE, KEYTYPE>::addNode(KEYTYPE key, Node<DATATYPE, KEYTYPE> * l
 	//Student must fill in
 	//Don't forget to set your key, Parent, then left or right
 	//Based on the case you use you will addNode recursively to the left or right
- 
+
 	//First check if root is null
 		//make a new node
 		//set the key and data
@@ -95,7 +95,7 @@ void BSTree<DATATYPE, KEYTYPE>::addNode(KEYTYPE key, Node<DATATYPE, KEYTYPE> * l
             leaf->setRight(newNodePtr);
         }
     }
-			
+
 }
 
 template <typename DATATYPE, typename KEYTYPE>
@@ -145,7 +145,7 @@ void BSTree<DATATYPE, KEYTYPE>::printInorder(Node<DATATYPE, KEYTYPE> * node)
 template <typename DATATYPE, typename KEYTYPE>
 void BSTree<DATATYPE, KEYTYPE>::print(ostream & out, const DATATYPE & data)
 {
-	out << data.number << "\t" << data.name << endl;
+	out << &data << endl;
 }
 
 template <typename DATATYPE, typename KEYTYPE>
@@ -158,10 +158,10 @@ void BSTree<DATATYPE, KEYTYPE>::deleteNode(KEYTYPE key)
 template <typename DATATYPE, typename KEYTYPE>
 Node<DATATYPE, KEYTYPE> * BSTree<DATATYPE, KEYTYPE>::deleteNode(Node<DATATYPE, KEYTYPE> * aRoot,KEYTYPE value)
 {
-   
+
 	/* Given a binary search tree and a key, this function deletes the key
 	and returns the new root */
-	
+
 	// base case
 	if (aRoot == nullptr) return aRoot;
 
@@ -183,7 +183,7 @@ Node<DATATYPE, KEYTYPE> * BSTree<DATATYPE, KEYTYPE>::deleteNode(Node<DATATYPE, K
 		if (aRoot->Left() == nullptr)
 		{
 			Node<DATATYPE, KEYTYPE> *temp = aRoot->Right();
-			delete aRoot;	
+			delete aRoot;
 			return temp;
 		}
 		else if (aRoot->Right() == nullptr)

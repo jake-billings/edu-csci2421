@@ -38,7 +38,18 @@ int assertInt(int expected, int got);
  * @param got The actual function value
  * @return int 1 if the test failed; 0 if it didn't
  */
-long assertLong(long expected, long got);
+int assertLong(long expected, long got);
+
+/**
+ * failCount +=  assertNotNullLong()
+ *
+ * Prints "Passed" or "Failed" with appropriate messages bassed on if a value is not null
+ *
+ * @param expected The value we expect got to equal
+ * @param got The actual function value
+ * @return int 1 if the test failed; 0 if it didn't
+ */
+int assertNotNull(long got);
 
 /**
  * failCount +=  assertFloat()

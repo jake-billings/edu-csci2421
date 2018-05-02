@@ -6,10 +6,10 @@ Status: works with completed and correct BSTree.cpp
 /*Template Directions: #include "BSTREEInt.hpp"
 but do NOT compile it (or add it to the project)*/
 #include <iostream>
-#include "BSTree.h"
 #include "BSTree.hpp"
 using namespace std;
 
+//Name change so as not to conflict with the real main() function
 int _bst_main()
 {
 	BSTree<GeneralData, int> *tree = new BSTree<GeneralData, int>;
@@ -83,4 +83,6 @@ int _bst_main()
 	cout << "After Deleting 30...\n";
 	tree->deleteNode(30);
 	tree->printInorder();
+
+    return 0;
 }

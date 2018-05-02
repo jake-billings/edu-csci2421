@@ -3,8 +3,9 @@
 #ifndef BSTREEINT_H
 #define BSTREEINT_H
 #include <iostream>
-using namespace std;
 #include "Node.h"
+
+using namespace std;
 
 // Binary Search Tree class
 template <typename DATATYPE, typename KEYTYPE>
