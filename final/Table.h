@@ -113,6 +113,8 @@ public:
      */
     unordered_map<string, string> findByValue(string columnValue, string cellValue);
 
+    unordered_map<string, string> findByPartialValue(string columnValue, string cellValue);
+
     void removeByValue(string columnValue, string cellValue);
 
     void replaceByValue(string columnValue, string cellValue,unordered_map<string, string> row);

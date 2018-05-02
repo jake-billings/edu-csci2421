@@ -83,3 +83,32 @@ pair<vector<string>, vector<unordered_map<string, string>>> readCsvAsMaps(istrea
 
     return pair<vector<string>, vector<unordered_map<string, string>>>(titles, table);
 };
+
+void outputCell(ostream &out, string cell) {
+    bool wrap = false;
+    if (cell.find(",") != std::string::npos) wrap = true;
+    if (cell.find("\"") != std::string::npos) wrap = true;
+
+    if (wrap) out << "\"";
+    out << cell;
+    if (wrap) out << "\"";
+}
+
+void writeMapsAsCsv(ostream &out, vector<string> titles, vector<unordered_map<string, string>> table) {
+    //Write the titles
+    for (unsigned int i = 0; i < titles.size(); i++) {
+        outputCell(out, titles[i]);
+        if (i < titles.size() - 1) out << ",";
+    }
+    out << endl;
+
+    //Write the rows
+    for (unsigned int j = 0; j < table.size(); j++) {
+        unordered_map<string, string> row = table[j];
+        for (unsigned int i = 0; i < titles.size(); i++) {
+            outputCell(out, row[titles[i]]);
+            if (i < titles.size() - 1) out << ",";
+        }
+        out << endl;
+    }
+}

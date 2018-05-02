@@ -8,25 +8,25 @@ void fuzz_bst() {
     cout << "Fuzzing BST...";
     auto *fuzzy = new BSTree<int, int>();
 
-    for (unsigned int i = 0; i<100; i++) {
+    for (unsigned int i = 0; i < 100; i++) {
         int a = rand();
         int *j = new int(a);
         fuzzy->addNode(rand(), *j);
     }
 
-    for (unsigned int i = 0; i<10000; i++) {
+    for (unsigned int i = 0; i < 10000; i++) {
         fuzzy->findNode(rand());
     }
 
-    for (unsigned int i = 0; i<10000; i++) {
+    for (unsigned int i = 0; i < 10000; i++) {
         fuzzy->deleteNode(rand());
     }
 
-    for (unsigned int i = 0; i<100000; i++) {
+    for (unsigned int i = 0; i < 100000; i++) {
         fuzzy->findNode(rand());
     }
 
-    for (unsigned int i = 0; i<10000; i++) {
+    for (unsigned int i = 0; i < 10000; i++) {
         fuzzy->deleteNode(rand());
     }
 
@@ -129,18 +129,38 @@ void test() {
     testCsvInputStream.close();
 
     //---csv reader testing---
-    describe("csv: test table: should have three columns");
+    describe("csv: readCsvAsMaps(): test table: should have three columns");
     failCount += assertInt(3, titles.size());
-    describe("csv: test table: should have second column named \"header2\"");
+    describe("csv: readCsvAsMaps(): test table: should have second column named \"header2\"");
     failCount += assertString("header2", titles[1]);
-    describe("csv: test table: should have two rows");
+    describe("csv: readCsvAsMaps(): test table: should have two rows");
     failCount += assertInt(2, tableMap.size());
-    describe("csv: test table: access on column 1 row 1 should return cell 1");
+    describe("csv: readCsvAsMaps(): test table: access on column 1 row 1 should return cell 1");
     failCount += assertString("cell1", tableMap[0]["header1"]);
-    describe("csv: test table: access on column 1 row 2 should return cell 4");
+    describe("csv: readCsvAsMaps(): test table: access on column 1 row 2 should return cell 4");
     failCount += assertString("cell4", tableMap[1]["header1"]);
-    describe("csv: test table: access on column 3 row 2 should return cell 6");
+    describe("csv: readCsvAsMaps(): test table: access on column 3 row 2 should return cell 6");
     failCount += assertString("cell6", tableMap[1]["header3"]);
+
+    ostringstream rawCsvFileStream;
+    ifstream testCsvInputStreamRaw;
+    testCsvInputStreamRaw.open("small.csv");
+    while (!testCsvInputStreamRaw.eof()) {
+        string temp;
+        getline(testCsvInputStreamRaw, temp);
+        for (unsigned int i = 0; i < temp.size(); i++) {
+            if (temp[i] == '"') {
+                temp.replace(i, 1, "");
+            }
+        }
+        rawCsvFileStream << temp << endl;
+    }
+
+    ostringstream outputtedTableStream;
+    writeMapsAsCsv(outputtedTableStream, titles, tableMap);
+
+    describe("csv: writeMapsAsCsv(): should output the exact same csv file (ignoring \"\"\")");
+    failCount += assertString(rawCsvFileStream.str(), outputtedTableStream.str());
 
     //---test BST---
     failCount += test_bst();
@@ -319,11 +339,18 @@ void test() {
     newActor2["Name"] = "Students";
     newActor2["Film"] = "Data Structures: The SQL Part II";
     actors.add(newActor2);
-    unordered_map<string,string> newActorFetched = actors.findByValue("Year", "2020");
+    unordered_map<string, string> newActorFetched = actors.findByValue("Year", "2020");
     newActorFetched["Year"] = "2021";
     actors.replaceByValue("Year", "2020", newActorFetched);
     failCount += assertString("Students", actors.findByValue("Year", "2021")["Name"]);
 
+    //R9/R10: Sorting: Due to BST implementation we received, this is not unit-testable without re-writing the code from the assignment
+    //R11/R12: Complete Searching: already tested
+
+    describe("R13/R14:  either the movie or the actor database and do a partial search on any searchable field");
+    failCount += assertString("Students", actors.findByPartialValue("Film", "The SQL Part")["Name"]);
+
+    //R15/R16: write out as CSV; CSV writing tested separately
 
     //Completion message
     cout << endl << "Completed automated tests. Failed " << failCount << " tests." << endl;

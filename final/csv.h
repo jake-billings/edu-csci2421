@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <iostream>
 #include <sstream>
+#include <string>
 
 using namespace std;
 
@@ -28,5 +29,7 @@ using namespace std;
  * @return pair: a vector of strings that are the titles and a vector in which each entry is a map representing the row from the csv
  */
 pair<vector<string>, vector<unordered_map<string, string>>> readCsvAsMaps(istream &in);
+
+void writeMapsAsCsv(ostream &out, vector<string> titles, vector<unordered_map<string, string>> table);
 
 #endif //EDU_CSCI2421_CSV_H

@@ -26,6 +26,16 @@ unordered_map<string, string> Table::findByValue(string columnValue, string cell
     throw runtime_error("no object found with that key/field combination");
 };
 
+unordered_map<string, string> Table::findByPartialValue(string columnValue, string cellValue) {
+    for (unsigned int i = 0; i<rawData.size(); i++) {
+        unordered_map<string, string> row = this->rawData[i];
+        if (row[columnValue].find(cellValue) !=  string::npos) {
+            return row;
+        }
+    }
+    throw runtime_error("no object found with that partial key/field combination");
+};
+
 void Table::removeByValue(string columnValue, string cellValue) {
     BSTree<unordered_map<string, string>, string> *t = this->indexedData[columnValue];
     if (t == nullptr) throw runtime_error("no index on that column");
@@ -61,6 +71,7 @@ void Table::add(unordered_map<string, string> row) {
             throw runtime_error("cannot add row to table; it is missing columns");
         }
     }
+    rawData.push_back(row);
     for (unsigned int i = 0; i < titles.size(); i++) {
         string titleToIndex = this->titles[i];
 
