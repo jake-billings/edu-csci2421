@@ -109,5 +109,10 @@ public:
     }
 };
 
+std::ostream &operator<< (ostream &out, GeneralData data) {
+    out << data.number << data.name << endl;
+    return out;
+}
+
 
 #endif //EDU_CSCI2312_NODE_H

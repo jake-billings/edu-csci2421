@@ -3,6 +3,7 @@
 #include <map>
 #include <vector>
 #include <sstream>
+#include <random>
 #include "../BSTree.h"
 #include "test_support.h"
 

@@ -30,8 +30,8 @@ void BSTree<DATATYPE, KEYTYPE>::freeNode(Node<DATATYPE, KEYTYPE> * leaf)
 		//recursive call of the leaf's right
 		//now delete the leaf
     if (leaf == nullptr) return;
-    freeNode(leaf->Left());
     freeNode(leaf->Right());
+    freeNode(leaf->Left());
     delete leaf;
 }
 
@@ -163,7 +163,7 @@ Node<DATATYPE, KEYTYPE> * BSTree<DATATYPE, KEYTYPE>::deleteNode(Node<DATATYPE, K
 	and returns the new root */
 
 	// base case
-	if (aRoot == nullptr) return aRoot;
+	if (aRoot == nullptr) return nullptr;
 
 	// If the key to be deleted is smaller than the aRoot's key,
 	// then it lies in left subtree
@@ -173,7 +173,7 @@ Node<DATATYPE, KEYTYPE> * BSTree<DATATYPE, KEYTYPE>::deleteNode(Node<DATATYPE, K
 	// If the key to be deleted is greater than the root's key,
 	// then it lies in right subtree
 	else if (value > aRoot->Key())
-		root->setRight(deleteNode(aRoot->Right(), value));
+		aRoot->setRight(deleteNode(aRoot->Right(), value));
 
 	// if key is same as root's key, then This is the node
 	// to be deleted
@@ -203,6 +203,7 @@ Node<DATATYPE, KEYTYPE> * BSTree<DATATYPE, KEYTYPE>::deleteNode(Node<DATATYPE, K
 
 		// Delete the inorder successor
 		aRoot->setRight(deleteNode(aRoot->Right(), temp->Key()));
+        aRoot->Right()->setParent(aRoot);
 	}
 	return aRoot;
 }

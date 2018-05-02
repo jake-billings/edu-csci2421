@@ -4,6 +4,37 @@
  */
 #include "test.h"
 
+void fuzz_bst() {
+    cout << "Fuzzing BST...";
+    auto *fuzzy = new BSTree<int, int>();
+
+    for (unsigned int i = 0; i<100; i++) {
+        int a = rand();
+        int *j = new int(a);
+        fuzzy->addNode(rand(), *j);
+    }
+
+    for (unsigned int i = 0; i<10000; i++) {
+        fuzzy->findNode(rand());
+    }
+
+    for (unsigned int i = 0; i<10000; i++) {
+        fuzzy->deleteNode(rand());
+    }
+
+    for (unsigned int i = 0; i<100000; i++) {
+        fuzzy->findNode(rand());
+    }
+
+    for (unsigned int i = 0; i<10000; i++) {
+        fuzzy->deleteNode(rand());
+    }
+
+    cout << "Done." << endl;
+
+    delete fuzzy;
+}
+
 /**
  * test_bst()
  *
@@ -79,6 +110,10 @@ int test_bst() {
  * Tests the functionality
  */
 void test() {
+    cout << "========Other Tests========" << endl;
+    fuzz_bst();
+    cout << "======End Other Tests======" << endl;
+
     //Keep track of how many tests we fail
     unsigned int failCount = 0;
 
@@ -90,7 +125,7 @@ void test() {
     testCsvInputStream.open("small.csv");
     pair<vector<string>, vector<unordered_map<string, string>>> result = readCsvAsMaps(testCsvInputStream);
     vector<string> titles = result.first;
-    vector<unordered_map<string, string>>tableMap = result.second;
+    vector<unordered_map<string, string>> tableMap = result.second;
     testCsvInputStream.close();
 
     //---csv reader testing---
@@ -132,27 +167,32 @@ void test() {
 
     string target("asdf");
 
-    describe("BSTree<unordered_map<string, string>, string>: querying a node that does not exist should return nullptr");
+    describe(
+            "BSTree<unordered_map<string, string>, string>: querying a node that does not exist should return nullptr");
     Node<unordered_map<string, string>, string> *foundNode = tree2->findNode(target);
     failCount += assertLong((long) nullptr, (long) foundNode);
 
-    describe("BSTree<unordered_map<string, string>, string>: querying a node that does exist should not return nullptr");
+    describe(
+            "BSTree<unordered_map<string, string>, string>: querying a node that does exist should not return nullptr");
     string target2("numberone");
     foundNode = tree2->findNode(target2);
     failCount += assertNotNull((long) foundNode);
 
-    describe("BSTree<unordered_map<string, string>, string>: querying that node should return data and that data should have expected children");
+    describe(
+            "BSTree<unordered_map<string, string>, string>: querying that node should return data and that data should have expected children");
     unordered_map<string, string> dataFromTree = foundNode->Data();
     failCount += assertString("b", dataFromTree["a"]);
 
-    describe("BSTree<unordered_map<string, string>, string>: querying that node should not return data from other children");
+    describe(
+            "BSTree<unordered_map<string, string>, string>: querying that node should not return data from other children");
     failCount += assertString("", dataFromTree["asdf"]);
 
     delete s;
     delete tree;
     delete tree2;
 
-    describe("BSTree<unordered_map<string, string>, string>: querying that node should still work after deleting the tree");
+    describe(
+            "BSTree<unordered_map<string, string>, string>: querying that node should still work after deleting the tree");
     failCount += assertString("b", dataFromTree["a"]);
 
     //---test Table---
@@ -232,6 +272,58 @@ void test() {
     }
 
     failCount += assertInt(false, err);
+
+    describe("R3/R4: Choose either the movie or actor database and add a record (should fail if missing fields)");
+    unordered_map<string, string> newActor;
+    newActor["Year"] = "2019";
+    newActor["Award"] = "Best movie ever";
+    newActor["Winner"] = "1";
+    newActor["Name"] = "Students";
+    //missing "Film"
+    err = false;
+    try {
+        actors.add(newActor);
+    } catch (runtime_error e) {
+        err = true;
+    }
+    failCount += assertInt(true, err);
+
+    describe("R3/R4: Choose either the movie or actor database and add a record (should succeed with all fields)");
+    newActor["Film"] = "Data Structures: The SQL";
+    err = false;
+    try {
+        actors.add(newActor);
+    } catch (runtime_error e) {
+        err = true;
+    }
+    failCount += assertInt(false, err);
+
+    describe("R3/R4: Choose either the movie or actor database and add a record (should get row back)");
+    failCount += assertString("Students", actors.findByValue("Year", "2019")["Name"]);
+
+    describe("R7/R8: Choose either the movie or actor database, search for a record and delete the fields");
+    actors.removeByValue("Year", "2019");
+    err = false;
+    try {
+        actors.findByValue("Year", "2019");
+    } catch (runtime_error e) {
+        err = true;
+    }
+    failCount += assertInt(true, err);
+
+    describe("R5/R6: : Choose either the movie or actor database, search for a record, and modify the fields");
+    unordered_map<string, string> newActor2;
+    newActor2["Year"] = "2020";
+    newActor2["Award"] = "Best movie ever";
+    newActor2["Winner"] = "1";
+    newActor2["Name"] = "Students";
+    newActor2["Film"] = "Data Structures: The SQL Part II";
+    actors.add(newActor2);
+    unordered_map<string,string> newActorFetched = actors.findByValue("Year", "2020");
+    newActorFetched["Year"] = "2021";
+    actors.replaceByValue("Year", "2020", newActorFetched);
+    failCount += assertString("Students", actors.findByValue("Year", "2021")["Name"]);
+
 
     //Completion message
     cout << endl << "Completed automated tests. Failed " << failCount << " tests." << endl;

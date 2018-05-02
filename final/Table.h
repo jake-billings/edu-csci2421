@@ -113,6 +113,10 @@ public:
      */
     unordered_map<string, string> findByValue(string columnValue, string cellValue);
 
+    void removeByValue(string columnValue, string cellValue);
+
+    void replaceByValue(string columnValue, string cellValue,unordered_map<string, string> row);
+
     /**
      * printInOrderBy()
      *
@@ -123,6 +127,8 @@ public:
      * @param key to column name to order by
      */
     void printInOrderBy(string key);
+
+    void add(unordered_map<string, string> row);
 
 
 };
