@@ -196,12 +196,42 @@ void test() {
     describe("integration: Table+csv: should successfully find row 2 using cell5 and header2");
     ifstream testCsvInputStream3;
     testCsvInputStream3.open("small.csv");
-    pair<vector<string>, vector<unordered_map<string, string>>> csvPair = readCsvAsMaps(testCsvInputStream3);
-    vector<string> titles3 = csvPair.first;
-    vector<unordered_map<string, string>>tableMap3 = csvPair.second;
+    Table table3 = readTable(testCsvInputStream3);
     testCsvInputStream3.close();
-    Table table3 = Table(titles3, tableMap3);
     failCount += assertString("cell4", table3.findByValue("header2", "cell5")["header1"]);
+
+    //----Requirements-Based Unit Testing----
+    //Can we do each requirement in code?
+    // If so, all we'd need is the menu system
+
+    describe("R1/R2: Read information from provided csv files (without an exception)");
+
+    ifstream actorStream;
+    ifstream nominationStream;
+    ifstream pictureStream;
+    Table actors;
+    Table nominations;
+    Table pictures;
+
+    err = false;
+    try {
+        actorStream.open("actor-actress.csv");
+        actors = readTable(actorStream);
+        actorStream.close();
+
+        nominationStream.open("nominations.csv");
+        nominations = readTable(nominationStream);
+        nominationStream.close();
+
+        pictureStream.open("pictures.csv");
+        pictures = readTable(pictureStream);
+        pictureStream.close();
+    } catch (runtime_error e) {
+        err = true;
+        cout << e.what();
+    }
+
+    failCount += assertInt(false, err);
 
     //Completion message
     cout << endl << "Completed automated tests. Failed " << failCount << " tests." << endl;

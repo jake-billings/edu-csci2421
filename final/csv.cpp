@@ -54,7 +54,22 @@ pair<vector<string>, vector<unordered_map<string, string>>> readCsvAsMaps(istrea
         unsigned int i = 0;
         do {
             string cell;
-            getline(lineStream, cell, ',');
+            if (lineStream.peek() == '"') {
+                while (lineStream.peek() == '"') {
+                    lineStream.ignore();
+                    string temp;
+                    getline(lineStream, temp, '"');
+
+                    cell += temp;
+                    if (lineStream.peek() != '"') {
+                        lineStream.ignore();
+                    } else {
+                        cell += "\"";
+                    }
+                }
+            } else {
+                getline(lineStream, cell, ',');
+            }
 
             if (i >= titles.size()) {
                 throw runtime_error("malformed csv; row length exceeded column row length");

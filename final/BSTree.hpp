@@ -84,7 +84,7 @@ void BSTree<DATATYPE, KEYTYPE>::addNode(KEYTYPE key, Node<DATATYPE, KEYTYPE> * l
             newNodePtr->setParent(leaf);
             leaf->setLeft(newNodePtr);
         }
-    } else {
+    } else if (key > leaf->Key()) {
         if (leaf->Right() != nullptr) {
             addNode(key, leaf->Right(), data);
         } else {

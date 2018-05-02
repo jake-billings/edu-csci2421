@@ -80,6 +80,18 @@ public:
      *
      * constructor
      *
+     * empty constructor
+     *
+     * available if you need to declare something outside a try/catch or something
+     *  don't use this to instantiate an empty table; you need data first
+     */
+    Table() {}
+
+    /**
+     * Table
+     *
+     * constructor
+     *
      * intended for use with "readCsvAsMaps()"
      * builds the sorted table data structure as desribe in class description
      *
@@ -111,6 +123,8 @@ public:
      * @param key to column name to order by
      */
     void printInOrderBy(string key);
+
+
 };
 
 Table readTable(istream &in);
