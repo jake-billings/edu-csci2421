@@ -23,6 +23,15 @@
  * I perform Unit, Integration, and E2E styles of testing in test() in test.cpp. This verifies the functionality
  *  of the database software and of the UI.
  *
+ *  Extra Credit
+ *  ============
+ *  Task: include an additional CSV file and interesting statistics
+ *
+ *  I only included nominations.csv into the project. All nominations can be viewed, edited, etc. just like the other
+ *  files.
+ *
+ *  I did not implement statistics.
+ *
  * Status: compiles and runs on csegrid
  */
 #include "test.h"

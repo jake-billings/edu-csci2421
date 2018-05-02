@@ -33,6 +33,15 @@
  I perform Unit, Integration, and E2E styles of testing in test() in test.cpp. This verifies the functionality
   of the database software and of the UI.
 
+ Extra Credit
+ ============
+ Task: include an additional CSV file and interesting statistics
+
+ I only included nominations.csv into the project. All nominations can be viewed, edited, etc. just like the other
+ files.
+
+ I did not implement statistics.
+
 
 *******************************************************
 *  Source files
@@ -108,6 +117,18 @@ Name:  test_support.cpp
 Name:  test_support.h
     declaration file for test support
     these functions form the basis of a mini testing suite
+
+Name:  actor-actress.csv
+    csv file containing actor and actress data
+
+Name:  nominations.csv
+    csv file containing extra credit nomination data
+
+Name:  pictures.csv
+    csv file containing the motion picture data
+
+Name:  small.csv
+    small dummy csv file used for testing parsing
 
    
 *******************************************************
