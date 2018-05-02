@@ -4,10 +4,10 @@
 #make
 #./matrix  (or whatever you call the TARGET)
 
-SOURCES = test/test.cpp test/test_support.cpp main.cpp Table.cpp
+SOURCES = test.cpp test_support.cpp main.cpp Table.cpp
 
 ######Change from matrix to (for example hw1) .#######
-TARGET = BST
+TARGET = FINAL
 
 #-------Do Not Change below this line-------------
 #Compile with g++

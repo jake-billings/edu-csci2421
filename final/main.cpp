@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "test/test.h"
+#include "test.h"
 
 //-----------Main Function------------
 /**

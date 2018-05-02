@@ -4,11 +4,11 @@
 #include <vector>
 #include <sstream>
 #include <random>
-#include "../BSTree.h"
+#include "BSTree.h"
 #include "test_support.h"
 
-#include "../csv.h"
-#include "../Table.h"
+#include "csv.h"
+#include "Table.h"
 
 using namespace std;
 
