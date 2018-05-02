@@ -1,3 +1,17 @@
+/**
+ * Name: Jake Billings
+ * Date: 05/02/2018
+ * Class: CSCI 2421
+ * Description:
+ *
+ * Dr. Augustine's BSTree header file from the assignment in Canvas
+ * Modifications:
+ *  - add this comment
+ *  - indent with four spaces
+ *
+ * Status: compiles and runs on csegrid
+ */
+
 //To be used in conjunction with Node.h and BSTree<DATATYPE, KEYTYPE>.cpp
 //If you modify this, please add your name and list any changes that you made
 #ifndef BSTREEINT_H

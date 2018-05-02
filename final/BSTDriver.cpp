@@ -1,3 +1,18 @@
+/**
+ * Name: Jake Billings
+ * Date: 05/02/2018
+ * Class: CSCI 2421
+ * Description:
+ *
+ * Dr. Augustine's BSTDriver file from the assignment in Canvas
+ * Modifications:
+ *  - changed "main()" to "_bst_main()" to prevent name conflicts when I was using this in testing
+ *  - add this comment
+ *  - indent with four spaces
+ *
+ * Status: compiles and runs on csegrid
+ */
+
 /*Driver program demonstrating creating a tree, adding, finding and deleting nodes
 Dr. Augustine 10/30/2017
 Status: works with completed and correct BSTree.cpp

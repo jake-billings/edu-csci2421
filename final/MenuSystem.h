@@ -109,18 +109,135 @@ public:
      */
     void loadTableFromPath(string name, string path);
 
+    /**
+     * selectTable()
+     *
+     * method
+     *
+     * uses in/out to prompt the user to select a table that we know about
+     *
+     * called by menu items
+     *
+     * @return string name of a valid table
+     */
     string selectTable();
-    void printRow(vector<string> titles, unordered_map<string,string> row);
 
+    /**
+     * printRow()
+     *
+     * method
+     *
+     * prints a row object from a given table to the output stream
+     *
+     * called by menu items
+     *
+     * @param titles the titles of the items in the map to print
+     * @param row the map to print
+     */
+    void printRow(vector<string> titles, unordered_map<string, string> row);
+
+    /**
+     * getDb()
+     *
+     * method
+     *
+     * getter
+     *
+     * returns db
+     *
+     * @return db
+     */
     const unordered_map<string, Table> &getDb() const;
 
+    //----Menu Options Listed in rootMenu()----
+    /**
+     * menuOneLoadFromDefaults()
+     *
+     * method
+     *
+     * menu item
+     *
+     * like option 2; but automatically picks the files where all the data is
+     *  convenience option to save time testing
+     */
     void menuOneLoadFromDefaults();
+
+    /**
+     * menuTwoLoad()
+     *
+     * method
+     *
+     * menu item
+     *
+     * prompts user for table/file names then loads tables
+     */
     void menuTwoLoad();
+
+    /**
+     * menuThreeAdd()
+     *
+     * method
+     *
+     * menu item
+     *
+     * prompts user for table then fields then inserts a row
+     */
     void menuThreeAdd();
+
+    /**
+     * menuFourFind()
+     *
+     * method
+     *
+     * menu item
+     *
+     * prompts user for table then fields then finds a row via exact match
+     */
     void menuFourFind();
+
+    /**
+     * menuFiveModify()
+     *
+     * method
+     *
+     * menu item
+     *
+     * prompts user for table then fields then finds a row via exact match then replaces it
+     *  with additional fields prompted from the user
+     */
     void menuFiveModify();
+
+    /**
+     * menuSixDelete()
+     *
+     * method
+     *
+     * menu item
+     *
+     * prompts user for table then fields then finds a row via exact match then deletes it
+     */
     void menuSixDelete();
+
+    /**
+     * menuSevenSort()
+     *
+     * method
+     *
+     * menu item
+     *
+     * prints a sorted version of a table; sorted by field that the user is prompted for
+     */
     void menuSevenSort();
+
+    /**
+     * menuEightPartialSearch()
+     *
+     * method
+     *
+     * menu item
+     *
+     * prompts user for table/field names then searches database for partial match
+     */
     void menuEightPartialSearch();
 };
 

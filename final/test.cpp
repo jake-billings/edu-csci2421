@@ -1,5 +1,24 @@
+/**
+ * Name: Jake Billings
+ * Date: 05/02/2018
+ * Class: CSCI 2421
+ * Description: implementation file for unit tests
+ * Status: compiles and runs on csegrid
+ */
+
 #include "test.h"
 
+/**
+ * fuzz_bst()
+ *
+ * function
+ *
+ * called by test()
+ *
+ * "fuzzes" the BST by adding and deleting thousands of random nodes
+ * this method is how I eventually tracked down a typo in the deletion code in BSTree,
+ * so I run it as part of unit testing
+ */
 void fuzz_bst() {
     cout << "Fuzzing BST...";
     auto *fuzzy = new BSTree<int, int>();
@@ -33,6 +52,8 @@ void fuzz_bst() {
 
 /**
  * test_bst()
+ *
+ * function
  *
  * specifically replaces BSTDriver.cpp with unit testing in my format
  *  does not fully test BST (see test())
@@ -103,9 +124,12 @@ int test_bst() {
 /**
  * int test()
  *
+ * function
+ *
  * Tests the functionality
  */
 void test() {
+    //Fuzz the BST
     cout << "========Other Tests========" << endl;
     fuzz_bst();
     cout << "======End Other Tests======" << endl;

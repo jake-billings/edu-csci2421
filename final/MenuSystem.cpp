@@ -80,10 +80,6 @@ bool MenuSystem::rootMenu() {
     return true;
 }
 
-const unordered_map<string, Table> &MenuSystem::getDb() const {
-    return db;
-}
-
 /**
  * loop()
  *
@@ -129,6 +125,17 @@ void MenuSystem::loadTableFromPath(string name, string path) {
     }
 }
 
+/**
+ * selectTable()
+ *
+ * method
+ *
+ * uses in/out to prompt the user to select a table that we know about
+ *
+ * called by menu items
+ *
+ * @return string name of a valid table
+ */
 string MenuSystem::selectTable() {
     string name;
     bool valid = false;
@@ -150,6 +157,18 @@ string MenuSystem::selectTable() {
     return name;
 }
 
+/**
+ * printRow()
+ *
+ * method
+ *
+ * prints a row object from a given table to the output stream
+ *
+ * called by menu items
+ *
+ * @param titles the titles of the items in the map to print
+ * @param row the map to print
+ */
 void MenuSystem::printRow(vector<string> titles, unordered_map<string, string> row) {
     for (unsigned int i = 0; i < titles.size(); i++) {
         string title = titles[i];
@@ -157,12 +176,46 @@ void MenuSystem::printRow(vector<string> titles, unordered_map<string, string> r
     }
 }
 
+/**
+ * getDb()
+ *
+ * method
+ *
+ * getter
+ *
+ * returns db
+ *
+ * @return db
+ */
+const unordered_map<string, Table> &MenuSystem::getDb() const {
+    return db;
+}
+
+/**
+ * menuOneLoadFromDefaults()
+ *
+ * method
+ *
+ * menu item
+ *
+ * like option 2; but automatically picks the files where all the data is
+ *  convenience option to save time testing
+ */
 void MenuSystem::menuOneLoadFromDefaults() {
     loadTableFromPath("actors", "actor-actress.csv");
     loadTableFromPath("pictures", "pictures.csv");
     loadTableFromPath("nominations", "nominations.csv");
 }
 
+/**
+ * menuTwoLoad()
+ *
+ * method
+ *
+ * menu item
+ *
+ * prompts user for table/file names then loads tables
+ */
 void MenuSystem::menuTwoLoad() {
     this->in.ignore();
     string table = this->selectTable();
@@ -175,6 +228,15 @@ void MenuSystem::menuTwoLoad() {
     loadTableFromPath(table, path);
 }
 
+/**
+ * menuThreeAdd()
+ *
+ * method
+ *
+ * menu item
+ *
+ * prompts user for table then fields then inserts a row
+ */
 void MenuSystem::menuThreeAdd() {
     this->in.ignore();
     string tableName = this->selectTable();
@@ -195,6 +257,15 @@ void MenuSystem::menuThreeAdd() {
     this->out << "Successfully added entry." << endl;
 }
 
+/**
+ * menuFourFind()
+ *
+ * method
+ *
+ * menu item
+ *
+ * prompts user for table then fields then finds a row via exact match
+ */
 void MenuSystem::menuFourFind() {
     this->in.ignore();
     string tableName = this->selectTable();
@@ -230,7 +301,16 @@ void MenuSystem::menuFourFind() {
     }
 }
 
-
+/**
+ * menuFiveModify()
+ *
+ * method
+ *
+ * menu item
+ *
+ * prompts user for table then fields then finds a row via exact match then replaces it
+ *  with additional fields prompted from the user
+ */
 void MenuSystem::menuFiveModify() {
     this->in.ignore();
     string tableName = this->selectTable();
@@ -282,6 +362,15 @@ void MenuSystem::menuFiveModify() {
     }
 }
 
+/**
+ * menuSixDelete()
+ *
+ * method
+ *
+ * menu item
+ *
+ * prompts user for table then fields then finds a row via exact match then deletes it
+ */
 void MenuSystem::menuSixDelete() {
     this->in.ignore();
     string tableName = this->selectTable();
@@ -316,6 +405,15 @@ void MenuSystem::menuSixDelete() {
     }
 }
 
+/**
+ * menuSevenSort()
+ *
+ * method
+ *
+ * menu item
+ *
+ * prints a sorted version of a table; sorted by field that the user is prompted for
+ */
 void MenuSystem::menuSevenSort() {
     this->in.ignore();
     string tableName = this->selectTable();
@@ -342,6 +440,15 @@ void MenuSystem::menuSevenSort() {
     }
 }
 
+/**
+ * menuEightPartialSearch()
+ *
+ * method
+ *
+ * menu item
+ *
+ * prompts user for table/field names then searches database for partial match
+ */
 void MenuSystem::menuEightPartialSearch() {
     this->in.ignore();
     string tableName = this->selectTable();

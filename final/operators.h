@@ -1,6 +1,11 @@
-//
-// Created by Jake Billings on 5/2/18.
-//
+/**
+ * Name: Jake Billings
+ * Date: 05/02/2018
+ * Class: CSCI 2421
+ * Description: declaration file for print operators for items that may be inserted into BSTs
+ * Status: compiles and runs on csegrid
+ */
+
 #include <iostream>
 #include <unordered_map>
 

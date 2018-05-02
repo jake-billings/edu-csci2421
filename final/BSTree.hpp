@@ -1,3 +1,19 @@
+/**
+ * Name: Jake Billings
+ * Date: 05/02/2018
+ * Class: CSCI 2421
+ * Description:
+ *
+ * Dr. Augustine's BSTDriver file from the assignment in Canvas
+ * Modifications:
+ *  - fix subtle bug in deletion code ('aRoot' vs 'root')
+ *  - add all code that is listed as "must be added by student"
+ *  - add this comment
+ *  - indent with four spaces
+ *
+ * Status: compiles and runs on csegrid
+ */
+
 //To be used in conjunction with BSTree.h and Node.h
 //When you modify this, please add your name and list any changes that you made
 //A few member functions have been left blank so you, the student can implemement

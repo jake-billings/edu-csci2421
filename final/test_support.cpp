@@ -1,3 +1,11 @@
+/**
+ * Name: Jake Billings
+ * Date: 05/02/2018
+ * Class: CSCI 2421
+ * Description: implementation file for unit test support/unit testing suite
+ * Status: compiles and runs on csegrid
+ */
+
 #include "test_support.h"
 
 //---------Poor Man's Testing Suite----------

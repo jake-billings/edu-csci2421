@@ -1,6 +1,10 @@
-//
-// Created by Jake Billings on 4/30/18.
-//
+/**
+ * Name: Jake Billings
+ * Date: 05/02/2018
+ * Class: CSCI 2421
+ * Description: declaration file for Table class
+ * Status: compiles and runs on csegrid
+ */
 #include <vector>
 #include <unordered_map>
 
@@ -106,16 +110,55 @@ public:
      *
      * search for and return a row from the table by selecting a BST sorted by "columnValue" then searching it for "cellValue"
      *
+     * throws runtime_error if there's no match
+     *
      * @param columnValue the column value to search within (and BST to select)
      * @param cellValue the cell value to search for
      * @return the complete row object as an unordered_map
      */
     unordered_map<string, string> findByValue(string columnValue, string cellValue);
 
+    /**
+     * findByPartialValue()
+     *
+     * method
+     *
+     * search for a row by searching for an exact match on a field
+     *
+     * throws runtime_error if there's no match
+     *
+     * @param columnValue the name of the column to search for; the search index to use
+     * @param cellValue the value to search for; this is what must match
+     * @return a complete row matching the exact field/column combination
+     */
     unordered_map<string, string> findByPartialValue(string columnValue, string cellValue);
 
+    /**
+     * removeByValue()
+     *
+     * method
+     *
+     * delete a row by searching for an exact match on a field
+     *
+     * throws runtime_error if there's no match
+     *
+     * @param columnValue the name of the column to search for; the search index to use
+     * @param cellValue the value to search for; this is what must match
+     */
     void removeByValue(string columnValue, string cellValue);
 
+    /**
+     * replaceByValue()
+     *
+     * method
+     *
+     * delete a row by searching for an exact match on a field then replace it with a new one
+     *
+     * throws runtime_error if there's no match
+     *
+     * @param columnValue the name of the column to search for; the search index to use
+     * @param cellValue the value to search for; this is what must match
+     */
     void replaceByValue(string columnValue, string cellValue,unordered_map<string, string> row);
 
     /**
@@ -125,16 +168,50 @@ public:
      *
      * calls printInorder() on the BST sorted by "key"
      *
+     * throws runtime_error if theres no column by that name
+     *
      * @param key to column name to order by
      */
     void printInOrderBy(string key);
 
+    /**
+     * add()
+     *
+     * method
+     *
+     * insert a single row into the table
+     *
+     * @param row the row to insert
+     */
     void add(unordered_map<string, string> row);
 
+    /**
+     * getTitles()
+     *
+     * method
+     *
+     * returns the titles for this table (from the top row of csv)
+     *
+     * @return vector of titles
+     */
     const vector<string> &getTitles() const;
 
 };
 
+/**
+ * readTable()
+ *
+ * method
+ *
+ * read a table from a CSV input stream
+ *
+ * uses csv util
+ *
+ * throws runtime_error if anything goes wrong (e.g. formatting)
+ *
+ * @param in input stream pointed at a valid csv file
+ * @return a table object based on the csv
+ */
 Table readTable(istream &in);
 
 #endif //EDU_CSCI2421_TABLE_H

@@ -1,3 +1,10 @@
+/**
+ * Name: Jake Billings
+ * Date: 05/02/2018
+ * Class: CSCI 2421
+ * Description: declaration file for unit tests
+ * Status: compiles and runs on csegrid
+ */
 #include <iostream>
 #include <fstream>
 #include <map>

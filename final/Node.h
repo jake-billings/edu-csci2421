@@ -1,3 +1,18 @@
+/**
+ * Name: Jake Billings
+ * Date: 05/02/2018
+ * Class: CSCI 2421
+ * Description:
+ *
+ * Dr. Augustine's Node.h header file from the Canvas assignment
+ *
+ * modifications
+ *  - indent with four spaces
+ *  - add this comment
+ *
+ * Status: compiles and runs on csegrid
+ */
+
 //To be used in conjunction with BSTree.h and BSTree.hpp
 //If you modify this, please add your name and list any changes that you made
 #ifndef NODE_

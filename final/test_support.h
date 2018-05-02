@@ -1,6 +1,9 @@
-/*
- * This file is subject to the terms and conditions defined in
- * file 'LICENSE', which is part of this source code package.
+/**
+ * Name: Jake Billings
+ * Date: 05/02/2018
+ * Class: CSCI 2421
+ * Description: declartion file for unit test support/testing suite
+ * Status: compiles and runs on csegrid
  */
 #include <iostream>
 
