@@ -8,9 +8,6 @@
 #ifndef EDU_CSCI2312_NODE_H
 #define EDU_CSCI2312_NODE_H
 
-//Include ostream so that we can implement the << operator
-#include <ostream>
-
 /**
  * Node
  *
@@ -108,11 +105,6 @@ public:
         return os;
     }
 };
-
-std::ostream &operator<< (ostream &out, GeneralData data) {
-    out << data.number << data.name << endl;
-    return out;
-}
 
 
 #endif //EDU_CSCI2312_NODE_H

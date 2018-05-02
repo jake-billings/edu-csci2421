@@ -4,7 +4,7 @@
 #make
 #./matrix  (or whatever you call the TARGET)
 
-SOURCES = test.cpp test_support.cpp main.cpp Table.cpp csv.cpp
+SOURCES = test.cpp test_support.cpp main.cpp Table.cpp csv.cpp MenuSystem.cpp operators.cpp
 
 ######Change from matrix to (for example hw1) .#######
 TARGET = FINAL
