@@ -1,7 +1,3 @@
-/*
- * This file is subject to the terms and conditions defined in
- * file 'LICENSE', which is part of this source code package.
- */
 #include "test.h"
 
 void fuzz_bst() {
@@ -351,6 +347,147 @@ void test() {
     failCount += assertString("Students", actors.findByPartialValue("Film", "The SQL Part")["Name"]);
 
     //R15/R16: write out as CSV; CSV writing tested separately
+
+    //----Test MenuSystem----
+    //MenuSystem option 1
+    istringstream mockInput;
+    ostringstream mockOutput;
+    MenuSystem menu(mockInput, mockOutput);
+
+    describe("MenuSystem: option 1: should load defaults");
+    mockInput.str("1");
+    mockOutput.str("");
+    bool menuResult = menu.rootMenu();
+    failCount += assertInt(true, menuResult);
+    describe("MenuSystem: option 1: should not have error message");
+    failCount += assertInt(true, mockOutput.str().find("Sorry") == string::npos);
+    describe("MenuSystem: option 1: should have loaded the first row of the actor");
+
+    unordered_map<string, Table> db = menu.getDb();
+    Table t = db["actors"];
+    string lookupVal = "Film";
+    failCount += assertString("Emil Jannings", t.findByValue(lookupVal, "The Last Command")["Name"]);
+
+    //MenuSystem option 2
+    istringstream mockInput2;
+    ostringstream mockOutput2;
+    MenuSystem menu2(mockInput2, mockOutput2);
+
+    describe("MenuSystem: option 2: should load custom");
+    mockInput2.str("2\nactors\nactor-actress.csv\n");
+    mockOutput2.str("");
+    bool menuResult2 = menu2.rootMenu();
+    failCount += assertInt(true, menuResult2);
+    describe("MenuSystem: option 2: should not have error message");
+    failCount += assertInt(true, mockOutput2.str().find("Sorry") == string::npos);
+    describe("MenuSystem: option 2: should have loaded the first row of the actor");
+    unordered_map<string, Table> db2 = menu.getDb();
+    Table t2 = db["actors"];
+    string lookupVal2 = "Film";
+    failCount += assertString("Emil Jannings", t.findByValue(lookupVal2, "The Last Command")["Name"]);
+
+    //MenuSystem option 3
+    describe("MenuSystem: option 3: should add new actor");
+    mockInput.str("3\nactors\n2025\nTest Award\n1\nJake Billings\nTest Film\n");
+    mockOutput.str("");
+    menuResult = menu.rootMenu();
+    failCount += assertInt(true, menuResult);
+    describe("MenuSystem: option 3: should not have error message");
+    failCount += assertInt(true, mockOutput.str().find("Sorry") == string::npos);
+    describe("MenuSystem: option 3: should have added a new actor");
+    db = menu.getDb();
+    t = db["actors"];
+    failCount += assertString("Jake Billings", t.findByValue("Year", "2025")["Name"]);
+
+    //MenuSystem option 4
+    describe("MenuSystem: option 4: should find a record");
+    mockInput.str("4\nactors\nYear\n2025\n");
+    mockOutput.str("");
+    menuResult = menu.rootMenu();
+    failCount += assertInt(true, menuResult);
+    describe("MenuSystem: option 4: should not have error message");
+    failCount += assertInt(true, mockOutput.str().find("Sorry") == string::npos);
+    describe("MenuSystem: option 4: should have found correct entry");
+    failCount += assertInt(false, mockOutput.str().find("Jake Billings") == string::npos);
+
+    describe("MenuSystem: option 4: should gracefully not find a record");
+    mockInput.str("4\nactors\nYear\n1243214\n");
+    mockOutput.str("");
+    menuResult = menu.rootMenu();
+    failCount += assertInt(true, menuResult);
+    describe("MenuSystem: option 4: should have error message");
+    failCount += assertInt(false, mockOutput.str().find("Sorry") == string::npos);
+
+    //MenuSystem option 5
+    describe("MenuSystem: option 5: should modify a record");
+    mockInput.str("5\nactors\nYear\n2025\n2025\nTest Award\n1\nUpdated Version Name\nTest Film\n");
+    mockOutput.str("");
+    menuResult = menu.rootMenu();
+    failCount += assertInt(true, menuResult);
+    describe("MenuSystem: option 5: should not have error message");
+    failCount += assertInt(true, mockOutput.str().find("Sorry") == string::npos);
+    describe("MenuSystem: option 5: should have found correct entry");
+    db = menu.getDb();
+    t = db["actors"];
+    failCount += assertString("Updated Version Name", t.findByValue("Year", "2025")["Name"]);
+
+    //MenuSystem option 6
+    describe("MenuSystem: option 6: should delete a record");
+    mockInput.str("6\nactors\nYear\n2025\n");
+    mockOutput.str("");
+    menuResult = menu.rootMenu();
+    failCount += assertInt(true, menuResult);
+    describe("MenuSystem: option 6: should not have error message");
+    failCount += assertInt(true, mockOutput.str().find("Sorry") == string::npos);
+    describe("MenuSystem: option 6: should not find the deleted entry");
+    db = menu.getDb();
+    t = db["actors"];
+    bool merr = false;
+    try {
+        t.findByValue("Year", "2025");
+    } catch (runtime_error e) {
+        merr = true;
+    }
+    failCount += assertInt(true, merr);
+
+    //MenuSystem option 7
+    //    describe("MenuSystem: option 7: should print in order");
+    //    mockInput.str("7\nactors\nYear\n");
+    //    mockOutput.str("");
+    //    menuResult = menu.rootMenu();
+    //    failCount += assertInt(true, menuResult);
+    //    describe("MenuSystem: option 7: should not have error message");
+    //    failCount += assertInt(true, mockOutput.str().find("Sorry") == string::npos);
+    //can't actually test anything else because BSTtree has cout built in
+    // and it's from the project, so we can't change it
+
+
+    //MenuSystem option 8
+    describe("MenuSystem: option 8: should find a record");
+    mockInput.str("8\nactors\nName\nJannings\n");
+    mockOutput.str("");
+    menuResult = menu.rootMenu();
+    failCount += assertInt(true, menuResult);
+    describe("MenuSystem: option 8: should not have error message");
+    failCount += assertInt(true, mockOutput.str().find("Sorry") == string::npos);
+    describe("MenuSystem: option 8: should have found correct entry");
+    failCount += assertInt(false, mockOutput.str().find("The Last Command") == string::npos);
+
+    describe("MenuSystem: option 8: should gracefully not find a record");
+    mockInput.str("8\nactors\nYear\n1243214\n");
+    mockOutput.str("");
+    menuResult = menu.rootMenu();
+    failCount += assertInt(true, menuResult);
+    describe("MenuSystem: option 8: should have error message");
+    failCount += assertInt(false, mockOutput.str().find("Sorry") == string::npos);
+
+
+    //MenuSystem option 9
+    describe("MenuSystem: option 9: should exit");
+    mockInput.str("9");
+    mockOutput.str("");
+    menuResult = menu.rootMenu();
+    failCount += assertInt(false, menuResult);
 
     //Completion message
     cout << endl << "Completed automated tests. Failed " << failCount << " tests." << endl;

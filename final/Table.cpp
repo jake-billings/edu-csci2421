@@ -20,7 +20,9 @@ Table::Table(vector<string> titles, vector<unordered_map<string, string>> rawDat
 
 unordered_map<string, string> Table::findByValue(string columnValue, string cellValue) {
     BSTree<unordered_map<string, string>, string> *t = this->indexedData[columnValue];
-    if (t == nullptr) throw runtime_error("no index on that column");
+    if (t == nullptr) {
+        throw runtime_error("no index on that column");
+    }
     Node<unordered_map<string, string>, string> *n = t->findNode(cellValue);
     if (n != nullptr) return n->Data();
     throw runtime_error("no object found with that key/field combination");
@@ -55,7 +57,7 @@ void Table::removeByValue(string columnValue, string cellValue) {
 };
 
 void Table::replaceByValue(string columnValue, string cellValue,unordered_map<string, string> row) {
-    this->removeByValue("Year", "2020");
+    this->removeByValue(columnValue, cellValue);
     this->add(row);
 }
 
@@ -81,6 +83,10 @@ void Table::add(unordered_map<string, string> row) {
         string key = row[titleToIndex];
         t->addNode(key, row);
     }
+}
+
+const vector<string> &Table::getTitles() const {
+    return titles;
 }
 
 Table readTable(istream &in) {

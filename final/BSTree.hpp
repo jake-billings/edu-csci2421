@@ -6,6 +6,11 @@
 but do NOT compile it (or add it to the project)*/
 #include "BSTree.h"
 
+#include "operators.h"
+
+#ifndef BSTREE_HPP
+#define BSTREE_HPP
+
 // Constructor
 template <typename DATATYPE, typename KEYTYPE>
 BSTree<DATATYPE, KEYTYPE>::BSTree() {
@@ -145,7 +150,7 @@ void BSTree<DATATYPE, KEYTYPE>::printInorder(Node<DATATYPE, KEYTYPE> * node)
 template <typename DATATYPE, typename KEYTYPE>
 void BSTree<DATATYPE, KEYTYPE>::print(ostream & out, const DATATYPE & data)
 {
-	out << &data << endl;
+	out << data << endl;
 }
 
 template <typename DATATYPE, typename KEYTYPE>
@@ -240,3 +245,5 @@ Node<DATATYPE, KEYTYPE> * BSTree<DATATYPE, KEYTYPE>::max(Node<DATATYPE, KEYTYPE>
 
 	return tempNode;
 }
+
+#endif

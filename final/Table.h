@@ -12,7 +12,6 @@ using namespace std;
 #ifndef EDU_CSCI2421_TABLE_H
 #define EDU_CSCI2421_TABLE_H
 
-
 /**
  * Table
  *
@@ -132,6 +131,7 @@ public:
 
     void add(unordered_map<string, string> row);
 
+    const vector<string> &getTitles() const;
 
 };
 
