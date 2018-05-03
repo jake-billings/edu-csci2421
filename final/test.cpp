@@ -506,9 +506,9 @@ void test() {
     failCount += assertInt(false, mockOutput.str().find("Sorry") == string::npos);
 
 
-    //MenuSystem option 9
-    describe("MenuSystem: option 9: should exit");
-    mockInput.str("9");
+    //MenuSystem option q
+    describe("MenuSystem: option q: should exit");
+    mockInput.str("q");
     mockOutput.str("");
     menuResult = menu.rootMenu();
     failCount += assertInt(false, menuResult);

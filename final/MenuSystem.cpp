@@ -36,7 +36,8 @@ bool MenuSystem::rootMenu() {
     this->out << "6. Delete a record" << endl;
     this->out << "7. Sort records by field" << endl;
     this->out << "8. Search for a records (by partial match)" << endl;
-    this->out << "9. Exit" << endl;
+    this->out << "9. Write to CSV file" << endl;
+    this->out << "q. Exit" << endl;
     this->out << endl;
     this->out << "Select one of the options above using its number." << endl;
     this->out << "> ";
@@ -70,6 +71,9 @@ bool MenuSystem::rootMenu() {
             this->menuEightPartialSearch();
             break;
         case '9':
+            this->menuNineWrite();
+            break;
+        case 'q':
             this->out << "Now exiting. Have a nice day." << endl;
             return false;
         default:
@@ -149,7 +153,7 @@ string MenuSystem::selectTable() {
         this->out << endl;
         this->out << "> ";
         getline(this->in, name);
-        
+
         for (unsigned int i = 0; i < this->tableNames.size(); i++) {
             if (tableNames[i] == name) valid = true;
         }
@@ -482,4 +486,32 @@ void MenuSystem::menuEightPartialSearch() {
     } catch (runtime_error e) {
         this->out << "Sorry, we couldn't find anything matching those criteria." << endl;
     }
+}
+
+/**
+ * menuNineWrite()
+ *
+ * method
+ *
+ * menu item
+ *
+ * prompts user for table and path the writes the table to that path
+ */
+void MenuSystem::menuNineWrite() {
+    this->in.ignore();
+    string tableName = this->selectTable();
+    Table table = db[tableName];
+
+    this->out << "What path should this data be written to?" << endl;
+    this->out << "> ";
+
+    string path;
+    getline(this->in, path);
+
+    ofstream out;
+    out.open(path);
+
+    table.writeTable(out);
+
+    out.close();
 }

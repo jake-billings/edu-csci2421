@@ -196,6 +196,20 @@ public:
      */
     const vector<string> &getTitles() const;
 
+    /**
+     * writeTable()
+     *
+     * method
+     *
+     * write a table to a CSV output stream
+     *
+     * uses csv util
+     *
+     * throws runtime_error if anything goes wrong (e.g. formatting)
+     *
+     * @param out output stream pointed at a valid file
+     */
+    void writeTable(ostream &out);
 };
 
 /**

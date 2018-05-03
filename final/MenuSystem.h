@@ -239,6 +239,17 @@ public:
      * prompts user for table/field names then searches database for partial match
      */
     void menuEightPartialSearch();
+
+    /**
+     * menuNineWrite()
+     *
+     * method
+     *
+     * menu item
+     *
+     * prompts user for table and path the writes the table to that path
+     */
+    void menuNineWrite();
 };
 
 
