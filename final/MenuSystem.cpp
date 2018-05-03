@@ -28,6 +28,7 @@ MenuSystem::MenuSystem(istream &in, ostream &out) : in(in), out(out) {
  */
 bool MenuSystem::rootMenu() {
     this->out << "===================Menu System===================" << endl;
+    this->out << "Make sure to use option 1 or option 2 to loadbefore attempting to view/modify data." << endl;
     this->out << "1. Load from defualt CSV files" << endl;
     this->out << "2. Load from CSV file" << endl;
     this->out << "3. Add a record" << endl;
