@@ -1,4 +1,7 @@
 # edu-csci2421
+
+[![DOI](https://zenodo.org/badge/117867965.svg)](https://zenodo.org/badge/latestdoi/117867965)
+
 This repository contains the work I completed for the course CSCI2421 Data Structures and Program Design at the University of Colorado Denver.
 
 ## Building this Project
